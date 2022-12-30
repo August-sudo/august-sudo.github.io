@@ -1,7 +1,39 @@
-<!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+  <head>
+    <title>My Personal Website</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>About Me</h1>
+    <div id="info">
+      <p id="name">My Name</p>
+      <p id="birthday">My Birthday</p>
+      <p id="language">My Language</p>
+    </div>
+    <button id="toggle-language">Toggle Language</button>
+    <script>
+        const toggleLanguageButton = document.getElementById("toggle-language");
+const nameElement = document.getElementById("name");
+const birthdayElement = document.getElementById("birthday");
+const languageElement = document.getElementById("language");
+
+let isEnglish = true;
+
+function toggleLanguage() {
+  if (isEnglish) {
+    nameElement.textContent = "Мое имя";
+    birthdayElement.textContent = "Мой день рождения";
+    languageElement.textContent = "Мой язык";
+  } else {
+    nameElement.textContent = "My Name";
+    birthdayElement.textContent = "My Birthday";
+    languageElement.textContent = "My Language";
+  }
+  isEnglish = !isEnglish;
+}
+
+toggleLanguageButton.addEventListener("click", toggleLanguage);
+
+      </script>
+  </body>
 </html>
