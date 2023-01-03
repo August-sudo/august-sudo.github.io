@@ -2,38 +2,92 @@
   <head>
     <title>My Personal Website</title>
     <meta charset="utf-8" />
+    <style>
+      /* Add some visual elements */
+      #header {
+        background-image: url("https://source.unsplash.com/random");
+        background-size: cover;
+        height: 200px;
+      }
+      /* Style the text */
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+      h1 {
+        color: #00b8d4;
+      }
+      /* Add a grid layout */
+      #info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+      }
+      /* Make the website responsive */
+      @media (max-width: 600px) {
+        #info {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!-- Add a header image -->
+    <div id="header"></div>
     <h1>About Me</h1>
     <div id="info">
       <p id="name">My Name</p>
       <p id="birthday">My Birthday</p>
       <p id="language">My Language</p>
+      <!-- Add a form -->
+      <form id="contact-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" />
+        <br />
+        <label for="message">Message:</label>
+        <textarea id="message"></textarea>
+        <br />
+        <button type="submit">Send</button>
+      </form>
     </div>
     <button id="toggle-language">Toggle Language</button>
     <script>
-        const toggleLanguageButton = document.getElementById("toggle-language");
-const nameElement = document.getElementById("name");
-const birthdayElement = document.getElementById("birthday");
-const languageElement = document.getElementById("language");
-
-let isEnglish = true;
-
-function toggleLanguage() {
-  if (isEnglish) {
-    nameElement.textContent = "Мое имя";
-    birthdayElement.textContent = "Мой день рождения";
-    languageElement.textContent = "Мой язык";
-  } else {
-    nameElement.textContent = "My Name";
-    birthdayElement.textContent = "My Birthday";
-    languageElement.textContent = "My Language";
+      // Make the website interactive
+      const toggleLanguageButton = document.getElementById("toggle-language");
+      const nameElement = document.getElementById("name");
+      const birthdayElement = document.getElementById("birthday");
+      const languageElement = document.getElementById("language");
+      let isEnglish = true;
+      function toggleLanguage() {
+        if (isEnglish) {
+          nameElement.textContent = "Мое имя";
+          birthdayElement.textContent = "Мой день рождения";
+          languageElement.textContent = "Мой язык";
+        } else {
+      nameElement.textContent = "My Name";
+      birthdayElement.textContent = "My Birthday";
+      languageElement.textContent = "My Language";
+    }
+    isEnglish = !isEnglish;
   }
-  isEnglish = !isEnglish;
-}
+  toggleLanguageButton.addEventListener("click", toggleLanguage);
+  // Add some functionality
+  const contactForm = document.getElementById("contact-form");
+  function sendMessage(event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    // Send the email and message to a server or database here
+    alert(`Sending email to ${email} with message: ${message}`);
+  }
+  contactForm.addEventListener("submit", sendMessage);
+  // Add social media buttons
+  const socialContainer = document.createElement("div");
+  socialContainer.innerHTML = `
+    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="Twitter" /></a>
+    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/facebook.png" alt="Facebook" /></a>
+    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram" /></a>
+  `;
+  document.body.appendChild(socialContainer);
+</script>
 
-toggleLanguageButton.addEventListener("click", toggleLanguage);
-
-      </script>
-  </body>
-</html>
