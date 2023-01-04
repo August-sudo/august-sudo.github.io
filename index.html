@@ -3,7 +3,12 @@
     <title>My Personal Website</title>
     <meta charset="utf-8" />
     <style>
-      /* Add some visual elements */
+      /* Add a consistent color scheme */
+      :root {
+        --primary-color: #00b8d4;
+        --secondary-color: #333;
+      }
+      /* Add a visually appealing background image */
       #header {
         background-image: url("https://source.unsplash.com/random");
         background-size: cover;
@@ -12,10 +17,10 @@
       /* Style the text */
       body {
         font-family: Arial, sans-serif;
-        color: #333;
+        color: var(--secondary-color);
       }
       h1 {
-        color: #00b8d4;
+        color: var(--primary-color);
       }
       /* Add a grid layout */
       #info {
@@ -53,41 +58,40 @@
     <button id="toggle-language">Toggle Language</button>
     <script>
       // Make the website interactive
-      const toggleLanguageButton = document.getElementById("toggle-language");
-      const nameElement = document.getElementById("name");
-      const birthdayElement = document.getElementById("birthday");
-      const languageElement = document.getElementById("language");
-      let isEnglish = true;
-      function toggleLanguage() {
-        if (isEnglish) {
-          nameElement.textContent = "Имя - Август";
-          birthdayElement.textContent = "День рождения - 4 августа";
-          languageElement.textContent = "Языки - Русский, Английский";
-        } else {
-      nameElement.textContent = "Name - August";
-      birthdayElement.textContent = "Birthday - August, 4";
-      languageElement.textContent = "Languages - Russian, English";
-    }
-    isEnglish = !isEnglish;
+const toggleLanguageButton = document.getElementById("toggle-language");
+const nameElement = document.getElementById("name");
+const birthdayElement = document.getElementById("birthday");
+const languageElement = document.getElementById("language");
+let isEnglish = true;
+function toggleLanguage() {
+  if (isEnglish) {
+    nameElement.textContent = "Мое имя";
+    birthdayElement.textContent = "Мой день рождения";
+    languageElement.textContent = "Мой язык";
+  } else {
+    nameElement.textContent = "My Name";
+    birthdayElement.textContent = "My Birthday";
+    languageElement.textContent = "My Language";
   }
-  toggleLanguageButton.addEventListener("click", toggleLanguage);
-  // Add some functionality
-  const contactForm = document.getElementById("contact-form");
-  function sendMessage(event) {
-    event.preventDefault();
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+  isEnglish = !isEnglish;
+}
+toggleLanguageButton.addEventListener("click", toggleLanguage);
+// Add some functionality
+const contactForm = document.getElementById("contact-form");
+function sendMessage(event) {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value
     // Send the email and message to a server or database here
     alert(`Sending email to ${email} with message: ${message}`);
-  }
-  contactForm.addEventListener("submit", sendMessage);
-  // Add social media buttons
-  const socialContainer = document.createElement("div");
-  socialContainer.innerHTML = `
-    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="Twitter" /></a>
-    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/facebook.png" alt="Facebook" /></a>
-    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram" /></a>
-  `;
-  document.body.appendChild(socialContainer);
+}
+contactForm.addEventListener("submit", sendMessage);
+// Add social media buttons
+const socialContainer = document.createElement("div");
+socialContainer.innerHTML = `
+  <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" alt="Twitter" /></a>
+  <a href="#"><img src="https://img.icons8.com/fluent/48/000000/facebook.png" alt="Facebook" /></a>
+  <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" alt="Instagram" /></a>
+`;
+document.body.appendChild(socialContainer);
 </script>
-
